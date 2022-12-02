@@ -9,7 +9,7 @@ object FileLoader {
    * @param fileName
    * @return
    */
-  def tryLoadFile(fileName: String): Try[List[String]] =
-    Using(Source.fromResource(fileName)) {source => source.getLines().toList}
+  def tryLoadFile(year: Int, day: Int): Try[List[String]] =
+    Using(Source.fromResource(s"$year/$day.txt")) {source => source.getLines().toList}
 
 }

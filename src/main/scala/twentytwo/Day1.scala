@@ -1,4 +1,4 @@
-package day1
+package twentytwo
 
 import utils.FileLoader
 
@@ -11,10 +11,10 @@ case class Elf(id: Long, caloriesSum: Long) {
 }
 
 
-object Main {
+object Day1 {
 
   def main(args: Array[String]): Unit = {
-    FileLoader.tryLoadFile("day1.txt") match {
+    FileLoader.tryLoadFile(2022, 1) match {
       case Success(rows) => println(s"Part1: ${part1(rows)}\tpart2: ${part2(rows)}")
       case Failure(exception) => exception.printStackTrace()
     }
@@ -30,7 +30,7 @@ object Main {
     def recursiveComputeResult(current: Elf,
                                max: Elf,
                                list: List[String]): Elf = list match {
-      case Nil => max
+      case Nil => if (current > max) current else max
       case head :: tail => head.toIntOption match {
         case Some(calories) => recursiveComputeResult(Elf(current.id, current.caloriesSum + calories), max, tail)
         case None => recursiveComputeResult(Elf(current.id + 1, 0), if (current > max) current else max, tail)
