@@ -1,9 +1,6 @@
 package twentytwo
 
-import utils.FileLoader
-
 import scala.annotation.tailrec
-import scala.util.{Failure, Success}
 
 case class Elf(id: Long, caloriesSum: Long) {
   def >(o: Elf): Boolean = if (this.caloriesSum > o.caloriesSum) true else false

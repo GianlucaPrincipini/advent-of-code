@@ -1,9 +1,5 @@
 package twentytwo
 
-import utils.FileLoader
-
-import scala.util.{Failure, Success}
-
 sealed trait Hand {
   val value: Int
   def versus(opponent: Hand): Outcome

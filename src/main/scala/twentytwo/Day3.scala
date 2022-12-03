@@ -1,9 +1,5 @@
 package twentytwo
 
-import utils.FileLoader
-
-import scala.util.{Failure, Success}
-
 case class Rucksack(firstCompartment: Set[Item], secondCompartment: Set[Item]) {
   def computeSharedPriority: Int = (firstCompartment intersect secondCompartment).head.priority
   def getAll: Set[Item] = (firstCompartment ++ secondCompartment)
@@ -25,8 +21,7 @@ case class Group(rucksacks: Seq[Rucksack]) {
 case class Item(value: Char, priority: Int)
 object Item {
   private val priorities: Map[Char, Int] =
-    (('a' to 'z') zip (1 to 26)).toMap ++
-      (('A' to 'Z') zip (27 to 52)).toMap
+    (('a' to 'z') zip (1 to 26)).toMap ++ (('A' to 'Z') zip (27 to 52)).toMap
 
   def apply(char: Char): Item = Item(char, priorities(char))
 }
