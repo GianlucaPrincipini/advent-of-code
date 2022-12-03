@@ -73,14 +73,11 @@ object Outcome {
   }
 }
 
-object Day2 {
+object Day2 extends Challenge[Long] {
   type Round1 = (Hand, Hand)
   type Round2 = (Hand, Outcome)
   def main(args: Array[String]): Unit = {
-    FileLoader.tryLoadFile(2022, 2) match {
-      case Failure(exception) => exception.printStackTrace()
-      case Success(rows) => println(s"Part1: ${part1(rows)}\tpart2: ${part2(rows)}")
-    }
+    printResult(2022,2)
   }
 
   def part1(input: List[String]): Long = {

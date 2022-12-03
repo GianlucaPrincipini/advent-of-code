@@ -11,13 +11,10 @@ case class Elf(id: Long, caloriesSum: Long) {
 }
 
 
-object Day1 {
+object Day1 extends Challenge[Long]{
 
   def main(args: Array[String]): Unit = {
-    FileLoader.tryLoadFile(2022, 1) match {
-      case Success(rows) => println(s"Part1: ${part1(rows)}\tpart2: ${part2(rows)}")
-      case Failure(exception) => exception.printStackTrace()
-    }
+    printResult(2022, 1)
   }
 
   /**
@@ -25,7 +22,7 @@ object Day1 {
    * @param input file rows
    * @return
    */
-  def part1(input: List[String]): Elf = {
+  override def part1(input: List[String]): Long = {
     @tailrec
     def recursiveComputeResult(current: Elf,
                                max: Elf,
@@ -36,7 +33,7 @@ object Day1 {
         case None => recursiveComputeResult(Elf(current.id + 1, 0), if (current > max) current else max, tail)
       }
     }
-    recursiveComputeResult(Elf(0, 0), Elf(0, 0), input)
+    recursiveComputeResult(Elf(0, 0), Elf(0, 0), input).caloriesSum
   }
 
   /**
@@ -44,7 +41,7 @@ object Day1 {
    * @param input file rows
    * @return sum of the best three elves calories sum
    */
-  def part2(input: List[String]): Long = {
+  override def part2(input: List[String]): Long = {
     @tailrec
     def recursiveComputeResult(current: Elf,
                                elfSum: List[Elf],

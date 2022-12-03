@@ -31,15 +31,9 @@ object Item {
   def apply(char: Char): Item = Item(char, priorities(char))
 }
 
-object Day3 {
+object Day3 extends Challenge[Long] {
   def main(args: Array[String]): Unit = {
-    FileLoader.tryLoadFile(2022, 3) match {
-      case Failure(exception) => exception.printStackTrace()
-      case Success(rows) => {
-        println(s"Part1: ${part1(rows)}")
-        println(s"Part2: ${part2(rows)}")
-      }
-    }
+    printResult(2022, 3)
   }
 
   def part1(input: List[String]): Long =
