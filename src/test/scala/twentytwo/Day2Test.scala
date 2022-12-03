@@ -1,7 +1,6 @@
-package twentytwo.day1
+package twentytwo
 
 import org.scalatest.flatspec.AnyFlatSpec
-import twentytwo.Day2
 import utils.FileLoader
 
 import scala.util.Success
