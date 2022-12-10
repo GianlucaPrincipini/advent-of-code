@@ -13,8 +13,7 @@ class Day7Test extends AnyFlatSpec {
   }
 
   it should "Solve part 2" in {
-    //    assert(FileLoader.tryLoadFile(2022, 6).map(Day6.part2) == Success("MCD"))
-    assert(FileLoader.tryLoadFile(2022, 6)
-      .map(Day7.part2) == Success(List(23, 23, 29, 26)))
+    assert(FileLoader.tryLoadFile(2022, 7)
+      .map(Day7.part2) == Success(24933642))
   }
 }
